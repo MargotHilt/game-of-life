@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  background-color: white;
+  text-align: center;
+}
+
+.field {
+  margin: auto;
+  background-color: rgb(231, 240, 206);
+  border-radius: 20px;
+  border: none;
+  width: 90%;
+  height: 70vh;
+}
+
