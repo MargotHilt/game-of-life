@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './Components/Header'
+import Cell from './Components/Cell'
 import React, { useState, useEffect, useRef } from 'react'
 import updateGridStatus from './updateGridStatus'
 
@@ -24,7 +25,7 @@ function App() {
   const row = gridSize.rowValue
 
   //returns random boolean value
-  function ranBool(){return Math.random() < 0.35}
+  function ranBool(){return Math.random() < 0.3}
 
   //returns an array of boolean the size of the grid, runs when size changes or the board is cleared
   useEffect(
@@ -47,12 +48,25 @@ useEffect(
     for(let r = 0; r < row; r++){
         const td = []
         for(let c = 0; c < col; c++){
-            td.push(<td key={`${r},${c}`}>{gridStatus[r][c] ? "🌸" : "🌱"}</td>)
+            td.push(<Cell key={`${r},${c}`} id={`${r},${c}`} handleCellClick={handleCellClick} gridStatus={gridStatus[r][c]}/>)
         } 
       tr.push(<tr key={r}>{td}</tr>)
     }
     setBoard(tr)
   }, [gridStatus])
+
+  // Change the value of the grid status for the clicked cell
+  function handleCellClick(e){
+    if(!isGameOn){
+      setGridStatus(prevGridStatus => prevGridStatus.map((row, r) => 
+        {return row.map((cell, c) => {
+          if(e.target.id === `${r},${c}`){
+            return cell = !cell}
+          else return cell
+        })}
+      ))
+    }
+  }
 
   //Button actions
 
