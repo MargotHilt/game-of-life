@@ -48,7 +48,7 @@ useEffect(
     for(let r = 0; r < row; r++){
         const td = []
         for(let c = 0; c < col; c++){
-            td.push(<Cell key={`${r},${c}`} id={`${r},${c}`} handleCellClick={handleCellClick} gridStatus={gridStatus[r][c]}/>)
+            td.push(<Cell key={`${r},${c}`} id={`${r},${c}`} handleCellClick={handleCellClick} gridStatus={gridStatus[r][c]} isGameOn={isGameOn}/>)
         } 
       tr.push(<tr key={r}>{td}</tr>)
     }
@@ -56,7 +56,7 @@ useEffect(
   }, [gridStatus])
 
   // Change the value of the grid status for the clicked cell
-  function handleCellClick(e){
+  function handleCellClick(e){ 
     if(!isGameOn){
       setGridStatus(prevGridStatus => prevGridStatus.map((row, r) => 
         {return row.map((cell, c) => {
@@ -90,10 +90,8 @@ useEffect(
     function run() {setGridStatus(prevGridStatus => updateGridStatus(prevGridStatus))}
 
       if(isGameOn){
-        console.log("interval")
         intervalId.current = setInterval(run, 700)}
       return () =>{
-        console.log("clear")
         clearInterval(intervalId.current)}
     },
     [isGameOn])
