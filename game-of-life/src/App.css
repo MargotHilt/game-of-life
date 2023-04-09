@@ -5,11 +5,11 @@ body {
 }
 
 .field {
-  margin: auto;
+  margin: 0.75em auto;
   background-color: rgb(231, 240, 206);
   border-radius: 20px;
   border: none;
   width: 90%;
-  height: 70vh;
+  height: 70%;
 }
 

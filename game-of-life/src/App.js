@@ -9,8 +9,8 @@ function App() {
   const [isGameOn, setGameOn] = useState(false)
   const [isBoardCleared, setIsBoardCleared] = useState(false)
   const [board, setBoard] = useState([])
-  const [gridSize, setGridSize] = useState({rowValue: "20", columnValue: "30"})
-  const [gridStatus, setGridStatus] = useState(Array(20).fill(false).map(()=> Array(30).fill(false)))
+  const [gridSize, setGridSize] = useState({rowValue: "25", columnValue: "25"})
+  const [gridStatus, setGridStatus] = useState(Array(25).fill(false).map(()=> Array(25).fill(false)))
 
   //handles the grid size through the input fields in header
   const handleGridSize = (form) => {
@@ -41,6 +41,7 @@ function App() {
         setIsBoardCleared(false) 
     }, [col, row, isBoardCleared])
 
+
   //use the boolean array to render the table depending on the boolean value
 useEffect(
   function renderBoard(){
@@ -48,7 +49,7 @@ useEffect(
     for(let r = 0; r < row; r++){
         const td = []
         for(let c = 0; c < col; c++){
-            td.push(<Cell key={`${r},${c}`} id={`${r},${c}`} handleCellClick={handleCellClick} gridStatus={gridStatus[r][c]} isGameOn={isGameOn}/>)
+            td.push(<Cell font={`${150/col + 150/row}px`} key={`${r},${c}`} id={`${r},${c}`} handleCellClick={handleCellClick} gridStatus={gridStatus[r][c]} isGameOn={isGameOn}/>)
         } 
       tr.push(<tr key={r}>{td}</tr>)
     }

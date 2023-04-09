@@ -1,4 +1,4 @@
 import './Cell.css';
 export default function Cell(props){
-    return <td class={!props.isGameOn ? "toggle" : ""} id={props.id} onClick={props.handleCellClick}>{props.gridStatus ? "🌸" : "🌱"}</td>
+    return <td style={{"fontSize": props.font}} className={!props.isGameOn ? "toggle" : ""} id={props.id} onClick={props.handleCellClick}>{props.gridStatus ? "🌸" : "🌱"}</td>
 }
